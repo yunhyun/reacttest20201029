@@ -1,27 +1,35 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+// import Home from './inc/home.js';
+// import Test from './inc/test.js';
+// index.js 파일 만들어서 파일 두개를 동시에 불러오기 
+import {Home, Test} from './inc';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+
+  render() {
+    return(
+      <div className='App'>
+        <BrowserRouter>
+          <Route path="/" component={Home} exact/>
+          {/* exact가 없으면 /test 경로로 갔을 때 / 경로도 함께 인식해서 두 파일의 내용이 같이 출력됨  */}
+          <Route path="/test" component={Test} />
+        </BrowserRouter>
+      </div>
+    )
+
+  }
 }
-
 export default App;
+
+
