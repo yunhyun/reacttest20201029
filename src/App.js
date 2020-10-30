@@ -1,7 +1,8 @@
 //import logo from './logo.svg';
 import React, {Component} from 'react';
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+// react router에서 제공하는 BrowserRouter, Route 태그 추가 
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 // import Home from './inc/home.js';
 // import Test from './inc/test.js';
@@ -24,6 +25,13 @@ class App extends Component {
           <Route path="/" component={Home} exact/>
           {/* exact가 없으면 /test 경로로 갔을 때 / 경로도 함께 인식해서 두 파일의 내용이 같이 출력됨  */}
           <Route path="/test" component={Test} />
+
+          {/* Link 태그 추가 */}
+          <ul>
+            <li> <Link to='/'> Home </Link> </li>
+            <li> <Link to='/test'> Test </Link> </li>
+          </ul>
+
         </BrowserRouter>
       </div>
     )
