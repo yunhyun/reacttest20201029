@@ -25,8 +25,11 @@ class App extends Component {
           <Route path="/" component={Home} exact/>
           {/* exact가 없으면 /test 경로로 갔을 때 / 경로도 함께 인식해서 두 파일의 내용이 같이 출력됨  */}
           <Route path="/test" component={Test} />
+          {/* Router를 이용해서 페이지로 데이터 전달하기 */}
+          <Route path="/test/:param1" component={Test} />
 
           {/* Link 태그 추가 */}
+          {/* Link 태그를 사용하면 페이지를 리로드하지 않고 새로운 페이지를 불러올 수 있음 */}
           <ul>
             <li> <Link to='/'> Home </Link> </li>
             <li> <Link to='/test'> Test </Link> </li>
