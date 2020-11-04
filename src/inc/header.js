@@ -11,7 +11,10 @@ class header extends Component {
         super(props);
         this.state = {
             // true면 모달 실행, false면 모달 종료 
-            visible : false
+            visible : false,
+            // 아이디, 비번 가져올 변수 
+            id : "",
+            password : "",
         } 
     }
 
@@ -25,6 +28,22 @@ class header extends Component {
     _closeModal = function() {
         this.setState({
             visible : false
+        });
+    }
+
+    _changeID = function() {
+        const mid = document.getElementsByName('id')[0].value;
+        console.log(mid);
+        this.setState({
+            id : mid
+        });
+    }
+
+    _changePW = function() {
+        const mpw = document.getElementsByName('password')[0].value;
+        console.log(mpw);
+        this.setState({
+            password : mpw
         });
     }
 
@@ -43,8 +62,25 @@ class header extends Component {
                     <h3 onClick={() => this._openModal()}>관리자 로그인</h3>
                         <Modal visible={this.state.visible} width="400" height="300" effect="fadeInDown" onClickAwar={() => this._closeModal()}>
                             <div>
-                                모달창 
-                                <input value="닫기" type="button" onClick={() => this._closeModal()} />
+                                <h4 className='acenter login_tit'>관리자 로그인</h4> 
+                                <form>
+                                    <div className='login_div'>
+                                        <div className='login_input_div'>
+                                            <p>관리자 아이디</p>
+                                            <input type="text" name="id" onChange={() => this._changeID()} />
+                                        </div>
+
+                                        <div className="login_input_div" >
+                                            <p>관리자 비밀번호</p>
+                                            <input type="text" name="password" onChange={() => this._changePW()} />
+                                        </div>
+
+                                        <div className='submit_div'>
+                                            <div> <input type="button" value="로그인" /> </div>
+                                            <div> <input value="닫기" type="button" onClick={() => this._closeModal()} /> </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </Modal>
                 </div>
